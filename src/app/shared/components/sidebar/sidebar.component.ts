@@ -23,7 +23,8 @@ export class SideBarComponent {
         localStorage.removeItem('history');
     }
 
-    onClickRemoveTag( tag: string ) {
+    onClickRemoveTag( event: Event, tag: string ) {
+        event.stopPropagation();
         const tagsHistory = this.gifsService.tagsHistory.filter(t => t !== tag);
         this.gifsService.setTagsHistory = tagsHistory;
         this.gifsService.saveLocalStorage();
